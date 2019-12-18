@@ -60,20 +60,29 @@ end
 
 def gross_per_studio(collection)
   index = 0
+  check_index = 0
+  studio = []
   result = {}
   while index < collection.length do
-    studio = collection[index][:studio]
-    inner_index = 0
-    while inner_index < collection.length
-      total = 0
-     if collection[inner_index][:studio] == studio
-       total += collection[inner_index][:worldwide_gross]
-     end
-       inner_index += 1
-    end
+    studio << collection[index][:studio]
     index += 1
   end
-  return result
+  verified_studios = studio.uniq
+  total = 0
+  while check_index < verified_studios.length do
+    s_index = 0
+    while s_index < collection.length do
+      if verified_studios[check_index] == collection[s_index][:studio]
+        total += collection[s_index][:worldwide_gross]
+      end
+      s_index += 1
+    end
+    verified_studios[check_index] = total
+    # result << verified_studios[check_index]
+    check_index += 1
+  end
+  return verified_studios
+
   # GOAL: Given an Array of Hashes where each Hash represents a movie,
   # return a Hash that includes the total worldwide_gross of all the movies from
   # each studio.
