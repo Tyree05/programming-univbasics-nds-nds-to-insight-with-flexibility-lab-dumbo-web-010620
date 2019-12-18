@@ -68,7 +68,7 @@ def gross_per_studio(collection)
     index += 1
   end
   verified_studios = studio.uniq
-  
+
   while check_index < verified_studios.length do
     total = 0
     s_index = 0
