@@ -81,6 +81,7 @@ def gross_per_studio(collection)
     # result << verified_studios[check_index]
     check_index += 1
   end
+  binding.pry
   return verified_studios
 
   # GOAL: Given an Array of Hashes where each Hash represents a movie,
